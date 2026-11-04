@@ -1,0 +1,39 @@
+DISEÑO DE TABLAS Y RELACIONES DE LA BASE DE DATOS
+
+Para implementar las funcionalidades de este sistema (productos, usuarios y pedidos):
+
+1. TABLA "PRODUCT" (Productos)
+- id (VARCHAR, Primary Key)
+- name (VARCHAR)
+- price (DOUBLE)
+- sales (INT)
+
+2. TABLA "USER" (Usuarios)
+Guarda la información de los clientes registrados.
+- nif (VARCHAR, Primary Key)
+- name (VARCHAR)
+- surname (VARCHAR)
+- mail (VARCHAR)
+
+
+3. TABLA "ORDER" (Pedidos)
+Registra cada pedido general realizado por un usuario.
+- idp (INT o VARCHAR, Primary Key)
+- dni (VARCHAR, Foreign Key
+- status (VARCHAR)
+
+//Como en el pedidio se tienen en cuenta diferentes productos y diferentes cantidades para una lista necesita hacer otra
+clase para poder agruparlas correctamente
+
+4. TABLA "LP" (Líneas de pedido)
+- idLP (INT, Primary Key)
+- idpedido (INT/VARCHAR, Foreign Key -> apunta a ORDER.id)
+- p (VARCHAR, Foreign Key -> apunta a PRODUCT.id)
+- q (INT) -> Cantidad comprada de ese producto específico.
+
+
+RELACIONES ENTRE TABLAS (CARDINALIDAD):
+
+- USER a ORDER (1:N): Un usuario (User) puede realizar múltiples pedidos (Order), vinculados por su "dni".
+- ORDER a LP (1:N): Un pedido (Order) contiene diferentes cantidades y productos (LP).
+- PRODUCT a LP (1:N): Un mismo producto (Product) puede estar referenciado ("p") en muchas líneas de pedidos distintos.
